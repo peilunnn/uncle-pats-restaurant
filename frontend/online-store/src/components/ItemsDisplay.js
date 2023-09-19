@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Button, Grid, Modal, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import fetchItems from "../utils/fetchItems";
 
 const backendUrl = process.env.REACT_APP_LOCAL_BACKEND_URL;
 
@@ -53,43 +54,28 @@ const useStyles = makeStyles({
   },
 });
 
-function ItemsDisplay({ isAdmin, onDialogOpen, onDelete }) {
+function ItemsDisplay({
+  isAdmin,
+  onDialogOpen,
+  onDelete,
+  items,
+  setItems,
+  currentPage,
+  setCurrentPage,
+  showNextButton,
+  setShowNextButton,
+}) {
   const classes = useStyles();
 
-  const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [showNextButton, setShowNextButton] = useState(true);
 
   const handleCloseModal = () => {
     setSelectedItem(null);
   };
 
   useEffect(() => {
-    fetchItems();
+    fetchItems(backendUrl, currentPage, setItems, setShowNextButton);
   }, [currentPage]);
-
-  const fetchItems = async () => {
-    try {
-      const response = await fetch(`${backendUrl}/?page=${currentPage}`);
-      const data = await response.json();
-      if (Array.isArray(data)) {
-        setItems(data);
-      } else {
-        setItems([]);
-        console.error("Invalid data format received:", data);
-      }
-
-      if (data.length < 8) {
-        setShowNextButton(false);
-      } else {
-        setShowNextButton(true);
-      }
-    } catch (error) {
-      console.error("Error fetching items:", error);
-      setItems([]);
-    }
-  };
 
   return (
     <div
