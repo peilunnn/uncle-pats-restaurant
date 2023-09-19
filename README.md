@@ -42,7 +42,7 @@
    ```
 
 # How to deploy this app on a cloud environment (Bonus: How you would do this with serverless components)
-
+![](/Diagrams/OnlineStoreArchi.png)
 - [FE] React --> Cloud Run
 
   Create a Dockerfile
@@ -127,7 +127,8 @@
   Example: `./cloud_sql_proxy -instances=tap-2023:asia-southeast1:sss-mysql=tcp:3306 -credential_file=../tap-2023-653687ae417e.json`
 
 - [Logging] Winston with DataDog --> Winston with Cloud Logging
-  Requires application level code change (winston config)
+  - Requires application level code change (winston config)
+  - Can use BigQuery as sink for analytics
 
 # Security hardening techniques on a cloud environment
 
