@@ -51,7 +51,6 @@ app.put("/update/:id", async (req, res) => {
     }
 
     await itemToUpdate.update(req.body);
-    debugger;
     res.json(itemToUpdate);
   } catch (error) {
     console.error("Error updating item:", error);

@@ -41,6 +41,27 @@ function AdminView() {
     price: "",
     description: "",
   });
+  const [validationErrors, setValidationErrors] = useState({});
+
+  const validateFormData = () => {
+    let errors = {};
+
+    if (!formData.name.trim()) {
+      errors.name = "Name is required";
+    }
+    if (!formData.price.trim() || isNaN(formData.price)) {
+      errors.price = "Valid price is required";
+    }
+    if (!formData.description.trim()) {
+      errors.description = "Description is required";
+    }
+    if (!formData.imageUrl.trim()) {
+      errors.imageUrl = "Image URL is required";
+    }
+
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   useEffect(() => {
     fetchItems(backendUrl, currentPage, setItems, setShowNextButton);
@@ -88,10 +109,15 @@ function AdminView() {
   };
 
   const handleDialogClose = () => {
+    setValidationErrors({});
     setDialogOpen(false);
   };
 
   const handleConfirm = async () => {
+    if (!validateFormData()) {
+      return;
+    }
+
     if (dialogType === "create") {
       try {
         const response = await fetch(`${backendUrl}/create`, {
@@ -169,6 +195,8 @@ function AdminView() {
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             InputProps={{ style: { color: "#eee" } }}
             InputLabelProps={{ style: { color: "#eee" } }}
+            helperText={validationErrors.name}
+            error={!!validationErrors.name}
           />
           <TextField
             margin="dense"
@@ -180,6 +208,8 @@ function AdminView() {
             }
             InputProps={{ style: { color: "#eee" } }}
             InputLabelProps={{ style: { color: "#eee" } }}
+            helperText={validationErrors.price}
+            error={!!validationErrors.price}
           />
           <TextField
             margin="dense"
@@ -191,6 +221,8 @@ function AdminView() {
             }
             InputProps={{ style: { color: "#eee" } }}
             InputLabelProps={{ style: { color: "#eee" } }}
+            helperText={validationErrors.description}
+            error={!!validationErrors.description}
           />
           <TextField
             margin="dense"
@@ -202,6 +234,8 @@ function AdminView() {
             }
             InputProps={{ style: { color: "#eee" } }}
             InputLabelProps={{ style: { color: "#eee" } }}
+            helperText={validationErrors.imageUrl}
+            error={!!validationErrors.imageUrl}
           />
         </DialogContent>
         <DialogActions style={{ justifyContent: "center" }}>
