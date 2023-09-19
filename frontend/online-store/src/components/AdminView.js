@@ -28,6 +28,7 @@ function AdminView() {
   const classes = useStyles();
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [dialogType, setDialogType] = React.useState(null);
   const [formData, setFormData] = React.useState({
     name: "",
     price: "",
@@ -35,6 +36,29 @@ function AdminView() {
   });
 
   const handleCreate = () => {
+    setDialogOpen(true);
+    handleDialogOpen();
+  };
+
+  const handleDialogOpen = (type, item = null) => {
+    setDialogType(type);
+
+    if (type === "update" && item) {
+      setFormData({
+        name: item.name,
+        price: item.price,
+        description: item.description,
+        imageUrl: item.imageUrl,
+      });
+    } else {
+      setFormData({
+        name: "",
+        price: "",
+        description: "",
+        imageUrl: "",
+      });
+    }
+
     setDialogOpen(true);
   };
 
@@ -61,14 +85,17 @@ function AdminView() {
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <ItemsDisplay
         isAdmin={true}
-        onUpdate={handleUpdate}
+        onDialogOpen={handleDialogOpen}
         onDelete={handleDelete}
       />
 
       <div
         style={{ display: "flex", justifyContent: "flex-end", padding: "1rem" }}
       >
-        <Button className={classes.button} onClick={handleCreate}>
+        <Button
+          className={classes.button}
+          onClick={() => handleDialogOpen("create")}
+        >
           Create
         </Button>
       </div>
@@ -81,7 +108,11 @@ function AdminView() {
           fontFamily: "Roboto",
         }}
       >
-        <DialogTitle style={{ color: "orange" }}>Create New Item</DialogTitle>
+        <DialogTitle style={{ color: "orange" }}>
+          <DialogTitle style={{ color: "orange" }}>
+            {dialogType === "create" ? "Create New Item" : "Update Item"}
+          </DialogTitle>
+        </DialogTitle>
         <DialogContent>
           <TextField
             autoFocus

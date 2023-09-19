@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/items", async (req, res) => {
+app.get("/", async (req, res) => {
   const page = Number(req.query.page) || 1;
   const limit = 8;
   const offset = (page - 1) * limit;

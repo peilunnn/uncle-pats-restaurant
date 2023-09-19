@@ -53,7 +53,7 @@ const useStyles = makeStyles({
   },
 });
 
-function ItemsDisplay({ isAdmin, onCreate, onUpdate, onDelete }) {
+function ItemsDisplay({ isAdmin, onDialogOpen, onDelete }) {
   const classes = useStyles();
 
   const [items, setItems] = useState([]);
@@ -165,7 +165,7 @@ function ItemsDisplay({ isAdmin, onCreate, onUpdate, onDelete }) {
               <div className={classes.buttonContainer}>
                 <Button
                   className={classes.button}
-                  onClick={() => onUpdate(selectedItem)}
+                  onClick={() => onDialogOpen("update", selectedItem)}
                   style={{ marginTop: "20px", marginRight: "15px" }}
                 >
                   Update
