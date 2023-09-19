@@ -1,27 +1,27 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const db = require("./db");
+const { Item } = require("./db.js");
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
+app.get("/items", async (req, res) => {
   const page = Number(req.query.page) || 1;
-  const limit = 10;
+  const limit = 8;
   const offset = (page - 1) * limit;
 
-  db.all(
-    `SELECT * FROM items ORDER BY createdAt DESC LIMIT ? OFFSET ?`,
-    [limit, offset],
-    (err, rows) => {
-      if (err) {
-        return res.status(500).json({ error: err.message });
-      }
-      res.json(rows);
-    }
-  );
+  try {
+    const items = await Item.findAll({
+      order: [["createdAt", "DESC"]],
+      limit: limit,
+      offset: offset,
+    });
+    res.json(items);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 const PORT = 5000;

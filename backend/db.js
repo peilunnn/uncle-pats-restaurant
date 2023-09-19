@@ -1,16 +1,48 @@
-const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database("./online-store.db");
+const { Sequelize, DataTypes } = require("sequelize");
 
-db.serialize(() => {
-  db.run(`CREATE TABLE IF NOT EXISTS items (
-    id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    description TEXT,
-    price REAL NOT NULL,
-    imageUrl TEXT,
-    createdAt TEXT DEFAULT CURRENT_TIMESTAMP,
-    updatedAt TEXT DEFAULT CURRENT_TIMESTAMP
-  )`);
+const sequelize = new Sequelize({
+  dialect: "sqlite",
+  storage: "./online-store.db",
 });
 
-module.exports = db;
+const Item = sequelize.define(
+  "Item",
+  {
+    id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: DataTypes.STRING,
+    price: {
+      type: DataTypes.REAL,
+      allowNull: false,
+    },
+    imageUrl: DataTypes.STRING,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
+    },
+  },
+  {
+    tableName: "items",
+    timestamps: true,
+    updatedAt: "updatedAt",
+    createdAt: "createdAt",
+  }
+);
+
+sequelize.sync();
+
+module.exports = {
+  sequelize,
+  Item,
+};
