@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Grid, Modal, Paper, Typography } from "@material-ui/core";
+import { Box, Button, Grid, Modal, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const backendUrl = process.env.REACT_APP_LOCAL_BACKEND_URL;
@@ -22,9 +22,12 @@ const useStyles = makeStyles({
   },
   modalContent: {
     position: "absolute",
-    width: "80%",
-    maxWidth: "500px",
-    backgroundColor: "white",
+    width: "90%",
+    height: "70%",
+    maxWidth: "800px",
+    maxHeight: "90vh",
+    overflowY: "auto",
+    backgroundColor: "#222",
     padding: "20px",
     top: "50%",
     left: "50%",
@@ -52,7 +55,6 @@ function UserView() {
     try {
       const response = await fetch(`${backendUrl}/items?page=${currentPage}`);
       const data = await response.json();
-      debugger;
       if (Array.isArray(data)) {
         setItems(data);
       } else {
@@ -60,7 +62,7 @@ function UserView() {
         console.error("Invalid data format received:", data);
       }
 
-      if (data.length < 10) {
+      if (data.length < 8) {
         setShowNextButton(false);
       } else {
         setShowNextButton(true);
@@ -69,10 +71,6 @@ function UserView() {
       console.error("Error fetching items:", error);
       setItems([]);
     }
-  };
-
-  const handleItemClick = (uuid) => {
-    window.location.href = `${backendUrl}/items/${uuid}`;
   };
 
   return (
@@ -85,6 +83,7 @@ function UserView() {
         backgroundColor: "#222",
       }}
     >
+      <Box style={{ marginBottom: 20 }} />
       <Grid container spacing={4}>
         {items.map((item) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
@@ -92,6 +91,15 @@ function UserView() {
               className={classes.paper}
               onClick={() => setSelectedItem(item)}
             >
+              <img
+                src={item.imageUrl}
+                alt={item.name}
+                style={{
+                  width: "100%",
+                  maxHeight: "150px",
+                  objectFit: "contain",
+                }}
+              />
               <Typography variant="h6">{item.name}</Typography>
               <Typography variant="body2">${item.price.toFixed(2)}</Typography>
             </Paper>
@@ -102,11 +110,38 @@ function UserView() {
       {selectedItem && (
         <Modal open={true} onClose={handleCloseModal}>
           <div className={classes.modalContent}>
-            <Typography variant="h5">{selectedItem.name}</Typography>
-            <Typography variant="body1">
+            <img
+              src={selectedItem.imageUrl}
+              alt={selectedItem.name}
+              style={{
+                width: "100%",
+                minHeight: "100px",
+                maxHeight: "400px",
+                objectFit: "contain",
+                marginBottom: 10,
+              }}
+            />
+            <Typography
+              variant="h5"
+              align="center"
+              style={{ color: "white", marginBottom: 10 }}
+            >
+              {selectedItem.name}
+            </Typography>
+            <Typography
+              variant="body1"
+              align="center"
+              style={{ color: "white", marginBottom: 10 }}
+            >
               ${selectedItem.price.toFixed(2)}
             </Typography>
-            <Typography variant="body2">{selectedItem.description}</Typography>
+            <Typography
+              variant="body2"
+              align="center"
+              style={{ color: "white", marginBottom: 10 }}
+            >
+              {selectedItem.description}
+            </Typography>
           </div>
         </Modal>
       )}
