@@ -42,7 +42,6 @@ app.post("/create", async (req, res) => {
 
 app.put("/update/:id", async (req, res) => {
   const itemId = req.params.id;
-  console.log(itemId);
 
   try {
     const itemToUpdate = await Item.findOne({ where: { id: itemId } });
@@ -52,10 +51,28 @@ app.put("/update/:id", async (req, res) => {
     }
 
     await itemToUpdate.update(req.body);
-    console.log(itemToUpdate);
+    debugger;
     res.json(itemToUpdate);
   } catch (error) {
     console.error("Error updating item:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.delete("/delete/:id", async (req, res) => {
+  const itemId = req.params.id;
+
+  try {
+    const itemToDelete = await Item.findOne({ where: { id: itemId } });
+
+    if (!itemToDelete) {
+      return res.status(404).json({ error: "Item not found" });
+    }
+
+    await itemToDelete.destroy();
+    res.json({ message: "Item deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting item:", error);
     res.status(500).json({ error: error.message });
   }
 });

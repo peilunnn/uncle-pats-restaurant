@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ItemsDisplay from "./ItemsDisplay";
 import {
   Button,
@@ -9,6 +9,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import fetchItems from "../utils/fetchItems";
 
 const backendUrl = process.env.REACT_APP_LOCAL_BACKEND_URL;
 
@@ -29,6 +30,10 @@ const useStyles = makeStyles({
 function AdminView() {
   const classes = useStyles();
 
+  const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [showNextButton, setShowNextButton] = useState(true);
+
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [dialogType, setDialogType] = React.useState(null);
   const [formData, setFormData] = React.useState({
@@ -36,6 +41,10 @@ function AdminView() {
     price: "",
     description: "",
   });
+
+  useEffect(() => {
+    fetchItems(backendUrl, currentPage, setItems, setShowNextButton);
+  }, [currentPage]);
 
   const handleDialogOpen = (type, item = null) => {
     setDialogType(type);
@@ -60,7 +69,23 @@ function AdminView() {
     setDialogOpen(true);
   };
 
-  const handleDelete = (itemId) => {};
+  const handleDelete = async (itemId) => {
+    try {
+      const response = await fetch(`${backendUrl}/delete/${itemId}`, {
+        method: "DELETE",
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.error);
+      }
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+    fetchItems(backendUrl, currentPage, setItems, setShowNextButton);
+    handleDialogClose();
+  };
 
   const handleDialogClose = () => {
     setDialogOpen(false);
@@ -92,6 +117,7 @@ function AdminView() {
         console.error("Error updating item:", error);
       }
     }
+    fetchItems(backendUrl, currentPage, setItems, setShowNextButton);
     handleDialogClose();
   };
 
@@ -101,6 +127,12 @@ function AdminView() {
         isAdmin={true}
         onDialogOpen={handleDialogOpen}
         onDelete={handleDelete}
+        items={items}
+        setItems={setItems}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        showNextButton={showNextButton}
+        setShowNextButton={setShowNextButton}
       />
 
       <div
