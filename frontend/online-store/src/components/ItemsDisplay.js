@@ -119,7 +119,10 @@ function ItemsDisplay({ isAdmin, onDialogOpen, onDelete }) {
                 }}
               />
               <Typography variant="h6">{item.name}</Typography>
-              <Typography variant="body2">${item.price.toFixed(2)}</Typography>
+              <Typography variant="body2">
+                {" "}
+                ${item.price ? item.price.toFixed(2) : "N/A"}
+              </Typography>
             </Paper>
           </Grid>
         ))}
@@ -151,7 +154,7 @@ function ItemsDisplay({ isAdmin, onDialogOpen, onDelete }) {
               align="center"
               style={{ color: "white", marginBottom: 10 }}
             >
-              ${selectedItem.price.toFixed(2)}
+              ${selectedItem.price ? selectedItem.price.toFixed(2) : "N/A"}
             </Typography>
             <Typography
               variant="body2"

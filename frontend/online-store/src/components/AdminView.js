@@ -10,6 +10,8 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+const backendUrl = process.env.REACT_APP_LOCAL_BACKEND_URL;
+
 const useStyles = makeStyles({
   button: {
     textTransform: "none",
@@ -35,16 +37,12 @@ function AdminView() {
     description: "",
   });
 
-  const handleCreate = () => {
-    setDialogOpen(true);
-    handleDialogOpen();
-  };
-
   const handleDialogOpen = (type, item = null) => {
     setDialogType(type);
 
     if (type === "update" && item) {
       setFormData({
+        id: item.id,
         name: item.name,
         price: item.price,
         description: item.description,
@@ -62,22 +60,38 @@ function AdminView() {
     setDialogOpen(true);
   };
 
-  const handleUpdate = (selectedItem) => {
-    // Handle the update logic here.
-    // Use selectedItem to populate a form similar to the create form and submit changes.
-  };
-
-  const handleDelete = (itemId) => {
-    // Handle delete logic here
-  };
+  const handleDelete = (itemId) => {};
 
   const handleDialogClose = () => {
     setDialogOpen(false);
   };
 
-  const handleConfirm = () => {
-    // Send formData to backend to create a new item
-    // After successful creation, close the dialog and fetch items again
+  const handleConfirm = async () => {
+    if (dialogType === "create") {
+      try {
+        const response = await fetch(`${backendUrl}/create`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+      } catch (error) {
+        console.error("Error creating item:", error);
+      }
+    } else if (dialogType === "update") {
+      try {
+        const response = await fetch(`${backendUrl}/update/${formData.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
+    }
     handleDialogClose();
   };
 
@@ -109,7 +123,7 @@ function AdminView() {
         }}
       >
         <DialogTitle style={{ color: "orange" }}>
-          <DialogTitle style={{ color: "orange" }}>
+          <DialogTitle align="center" style={{ color: "orange" }}>
             {dialogType === "create" ? "Create New Item" : "Update Item"}
           </DialogTitle>
         </DialogTitle>
