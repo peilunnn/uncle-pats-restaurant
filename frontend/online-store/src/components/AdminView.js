@@ -49,7 +49,7 @@ function AdminView() {
     if (!formData.name.trim()) {
       errors.name = "Name is required";
     }
-    if (!formData.price.trim() || isNaN(formData.price)) {
+    if (!String(formData.price).trim() || isNaN(formData.price)) {
       errors.price = "Valid price is required";
     }
     if (!formData.description.trim()) {

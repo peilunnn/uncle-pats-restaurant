@@ -55,10 +55,10 @@ const useStyles = makeStyles({
 });
 
 function ItemsDisplay({
-  isAdmin,
-  onDialogOpen,
-  onDelete,
-  items,
+  isAdmin = false,
+  onDialogOpen = () => {},
+  onDelete = () => {},
+  items = [],
   setItems,
   currentPage,
   setCurrentPage,

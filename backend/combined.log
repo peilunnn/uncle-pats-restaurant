@@ -1,0 +1,16 @@
+{"level":"info","message":"Server is running on http://localhost:5000","service":"your-service-name","timestamp":"2023-09-20 02:34:09"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:34:12"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:34:12"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:34:12"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:34:12"}
+{"level":"info","message":"Item with ID: b1ac273b-9b88-483b-ad3a-e6241b511a30 updated successfully.","service":"your-service-name","timestamp":"2023-09-20 02:34:19"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:34:19"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:35:33"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:35:36"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:35:36"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:35:36"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:35:36"}
+{"level":"info","message":"Item with ID: b1ac273b-9b88-483b-ad3a-e6241b511a30 updated successfully.","service":"your-service-name","timestamp":"2023-09-20 02:35:44"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:35:44"}
+{"level":"info","message":"Item with ID: b1ac273b-9b88-483b-ad3a-e6241b511a30 updated successfully.","service":"your-service-name","timestamp":"2023-09-20 02:35:53"}
+{"level":"info","message":"Items retrieved successfully.","service":"your-service-name","timestamp":"2023-09-20 02:35:53"}
