@@ -42,7 +42,9 @@
    ```
 
 # How to deploy this app on a cloud environment (Bonus: How you would do this with serverless components)
+
 ![](/Diagrams/OnlineStoreArchi.png)
+
 - [FE] React --> Cloud Run
 
   Create a Dockerfile
@@ -90,7 +92,7 @@
   ```
   cd backend
   docker build -t online-store-be-image .
-  gcloud run deploy online-store-be-image --source . --region=asia-southeast1 --port=5000 --add-cloudsql-instances YOUR_INSTANCE_CONNECTION_NAME --set-env-vars INSTANCE_UNIX_SOCKET="/cloudsql/YOUR_INSTANCE_CONNECTION_NAME" --set-env-vars INSTANCE_CONNECTION_NAME=YOUR_INSTANCE_CONNECTION_NAME --set-env-vars DB_NAME=YOUR_DB_NAME --set-env-vars DB_USER=YOUR_DB_USER
+  gcloud run deploy online-store-be-image --source . --region=asia-southeast1 --port=8000 --add-cloudsql-instances YOUR_INSTANCE_CONNECTION_NAME --set-env-vars INSTANCE_UNIX_SOCKET="/cloudsql/YOUR_INSTANCE_CONNECTION_NAME" --set-env-vars INSTANCE_CONNECTION_NAME=YOUR_INSTANCE_CONNECTION_NAME --set-env-vars DB_NAME=YOUR_DB_NAME --set-env-vars DB_USER=YOUR_DB_USER
   ```
 
 - [DB] SQLite (in memory) --> Cloud SQL MySQL

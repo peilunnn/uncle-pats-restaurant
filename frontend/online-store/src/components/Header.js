@@ -20,7 +20,7 @@ function Header() {
           fontFamily: "Roboto, sans-serif",
         }}
       >
-        Online Store
+        Uncle Pat's Restaurant
       </h1>
     </header>
   );

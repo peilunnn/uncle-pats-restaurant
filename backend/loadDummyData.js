@@ -127,14 +127,6 @@ const dummyItems = [
     imageUrl:
       "https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2525&q=80",
   },
-  {
-    id: uuidv4(),
-    name: "Rice with Curry",
-    description: "Steamed rice served with a flavorful curry.",
-    price: 12.99,
-    imageUrl:
-      "https://images.unsplash.com/photo-1597215342549-5b5c6f9a8aa8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80",
-  },
 ];
 
 dummyItems.forEach((item) => {

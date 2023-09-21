@@ -5,6 +5,6 @@ WORKDIR /backend
 COPY package.json .
 RUN npm install --legacy-peer-deps
 COPY . .
-EXPOSE 5000
+EXPOSE 8000
 
 CMD ["npm", "start"]

@@ -1,3 +1,4 @@
+const tracer = require("dd-trace").init();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -84,7 +85,7 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-const PORT = 5000;
+const PORT = 8000;
 
 app.listen(PORT, () => {
   logger.info(`Server is running on http://localhost:${PORT}`);
