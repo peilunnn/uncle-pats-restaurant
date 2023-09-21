@@ -3,7 +3,7 @@
 - [FE] React
 - [BE] Express
 - [DB] SQLite (in memory)
-- [ORM] Sequelizer
+- [ORM] Sequelize
 - [Logging] Winston with DataDog
 
 # Setup
@@ -82,7 +82,7 @@
   COPY package.json .
   RUN npm install --legacy-peer-deps
   COPY . .
-  EXPOSE 3000
+  EXPOSE 8000
 
   CMD ["npm", "start"]
   ```
@@ -100,20 +100,20 @@
   Set up Cloud SQL MySQL instance
 
   1.  Follow the tutorial [here](https://cloud.google.com/sql/docs/mysql/create-instance#:~:text=request%20an%20increase.-,Create%20a%20MySQL%20instance,-Console) to create a Cloud SQL instance. In this POC, we don't set a password (though it's good practice to)
-  2.  Create a database `snippetsDb`, then a table `snippets` inside this database - you can do this via Cloud Shell
+  2.  Create a database `itemsDb`, then a table `items` inside this database - you can do this via Cloud Shell
 
   ```
-  CREATE DATABASE snippetsDb;
-  USE snippetsDb;
-   CREATE TABLE snippets (
-       id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-       title TEXT NOT NULL,
-       content TEXT NOT NULL,
-       urlIdentifier VARCHAR(255) UNIQUE NOT NULL,
-       views INT DEFAULT 0,
-       createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-       expiresAt DATETIME
-       );
+  CREATE DATABASE itemsDb;
+  USE items;
+  CREATE TABLE items (
+      id TEXT NOT NULL PRIMARY KEY,
+      name TEXT NOT NULL,
+      description TEXT,
+      price REAL NOT NULL,
+      imageUrl TEXT,
+      createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+      updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+  );
   ```
 
   3.  Create a service account and place your service account key JSON in the project root. Then from root, run
