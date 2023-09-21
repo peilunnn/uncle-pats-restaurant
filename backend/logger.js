@@ -10,11 +10,9 @@ const logger = createLogger({
     format.splat(),
     format.json()
   ),
-  defaultMeta: { service: "your-service-name" },
+  defaultMeta: { service: "online-store" },
   transports: [
-    // - Write all logs error (and below) to `error.log`.
     new transports.File({ filename: "error.log", level: "error" }),
-    // - Write all logs with level `info` and below to `combined.log`
     new transports.File({ filename: "combined.log" }),
   ],
 });
