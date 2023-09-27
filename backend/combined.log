@@ -48,3 +48,20 @@
 {"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-21 13:09:17"}
 {"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-21 13:09:18"}
 {"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-21 13:09:18"}
+{"level":"info","message":"Server is running on http://localhost:8000","service":"online-store","timestamp":"2023-09-27 16:24:23"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:25:22"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:25:22"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:25:22"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:25:22"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:25:51"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:25:51"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:25:51"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:25:51"}
+{"level":"info","message":"Item created with ID: 41c9cd0a-9375-4342-ba82-5e7d14cc72e9","service":"online-store","timestamp":"2023-09-27 16:26:30"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:26:30"}
+{"level":"info","message":"Item with ID: 41c9cd0a-9375-4342-ba82-5e7d14cc72e9 updated successfully.","service":"online-store","timestamp":"2023-09-27 16:26:45"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:26:45"}
+{"level":"info","message":"Item with ID: 41c9cd0a-9375-4342-ba82-5e7d14cc72e9 updated successfully.","service":"online-store","timestamp":"2023-09-27 16:26:51"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:26:51"}
+{"level":"info","message":"Item with ID: 41c9cd0a-9375-4342-ba82-5e7d14cc72e9 deleted successfully.","service":"online-store","timestamp":"2023-09-27 16:26:54"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:26:54"}
