@@ -1,6 +1,21 @@
-const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database("./online-store.db");
+const mysql = require("mysql");
 const { v4: uuidv4 } = require("uuid");
+require("dotenv").config();
+
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.error("Error connecting:", err.stack);
+    return;
+  }
+  console.log("Connected to MySQL as ID", connection.threadId);
+});
 
 const dummyItems = [
   {
@@ -130,13 +145,22 @@ const dummyItems = [
 ];
 
 dummyItems.forEach((item) => {
-  db.run(
-    `INSERT INTO items (id, name, description, price, imageUrl) VALUES (?, ?, ?, ?, ?)`,
+  connection.query(
+    "INSERT INTO items (id, name, description, price, imageUrl) VALUES (?, ?, ?, ?, ?)",
     [item.id, item.name, item.description, item.price, item.imageUrl],
-    (err) => {
+    (err, results, fields) => {
       if (err) {
         console.error("Error inserting item:", err.message);
+      } else {
+        console.log("Inserted item with ID:", item.id);
       }
     }
   );
+});
+
+connection.end((err) => {
+  if (err) {
+    console.error("Error ending the connection:", err);
+  }
+  console.log("Connection to MySQL closed.");
 });

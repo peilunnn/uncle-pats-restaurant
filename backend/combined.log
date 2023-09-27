@@ -65,3 +65,28 @@
 {"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:26:51"}
 {"level":"info","message":"Item with ID: 41c9cd0a-9375-4342-ba82-5e7d14cc72e9 deleted successfully.","service":"online-store","timestamp":"2023-09-27 16:26:54"}
 {"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 16:26:54"}
+{"level":"info","message":"Server is running on http://localhost:8000","service":"online-store","timestamp":"2023-09-27 17:52:15"}
+{"level":"info","message":"Item created with ID: 70fed64d-c6e5-4cd9-b248-71fa6e10dae0","service":"online-store","timestamp":"2023-09-27 17:55:36"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 17:55:36"}
+{"level":"info","message":"Item with ID: 70fed64d-c6e5-4cd9-b248-71fa6e10dae0 updated successfully.","service":"online-store","timestamp":"2023-09-27 17:56:49"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 17:56:49"}
+{"level":"info","message":"Item with ID: 70fed64d-c6e5-4cd9-b248-71fa6e10dae0 deleted successfully.","service":"online-store","timestamp":"2023-09-27 17:57:01"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 17:57:01"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 17:59:04"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 17:59:04"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 17:59:04"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 17:59:04"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:02:01"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:02:01"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:02:01"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:02:01"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:04:56"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:04:56"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:04:56"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:04:56"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:05:04"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:05:04"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:05:04"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:05:04"}
+{"level":"info","message":"Item with ID: 0367e40b-3a8a-49a4-9d51-0a63e3bda42f deleted successfully.","service":"online-store","timestamp":"2023-09-27 18:05:08"}
+{"level":"info","message":"Items retrieved successfully.","service":"online-store","timestamp":"2023-09-27 18:05:08"}
