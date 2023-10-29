@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import ItemsDisplay from "./ItemsDisplay";
 import fetchItems from "../utils/fetchItems";
 
-const backendUrl = process.env.REACT_APP_LOCAL_BACKEND_URL;
+const backendUrl = process.env.REACT_APP_ECS_BACKEND_URL;
 
 function UserView() {
   const [items, setItems] = useState([]);

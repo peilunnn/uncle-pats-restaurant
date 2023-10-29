@@ -3,7 +3,7 @@ import { Box, Button, Grid, Modal, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import fetchItems from "../utils/fetchItems";
 
-const backendUrl = process.env.REACT_APP_LOCAL_BACKEND_URL;
+const backendUrl = process.env.REACT_APP_ECS_BACKEND_URL;
 
 const useStyles = makeStyles({
   input: {
